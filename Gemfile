@@ -42,6 +42,8 @@ group :development, :test do
   gem 'rspec-rails'
   # Collection of testing matchers extracted from Shoulda
   gem 'shoulda-matchers'
+  # Fixtures replacement with a straightforward definition syntax
+  gem 'factory_girl_rails'
 end
 
 group :development do

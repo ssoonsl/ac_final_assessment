@@ -1,17 +1,6 @@
 class NotesController < ApplicationController
 
-  def new
-    @note = Note.new
-  end
-
-  def create
-    @note = current_user.notes.build(note_params)
-    if @note.save
-      redirect_to notes_path
-    else
-      render :new
-    end
-  end
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @notes = Note.all
@@ -27,6 +16,19 @@ class NotesController < ApplicationController
     end
   end
 
+  def new
+    @note = Note.new
+  end
+
+  def create
+    @note = current_user.notes.build(note_params)
+    if @note.save
+      redirect_to notes_path
+    else
+      render :new
+    end
+  end
+
   def edit
     @note = Note.find(params[:id])
   end
@@ -39,6 +41,12 @@ class NotesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @note = Note.find(params[:id])
+    @note.destroy
+    redirect_to notes_path
   end
 
   private
