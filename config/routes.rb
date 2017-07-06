@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :notes, only: [:index]
 
+  resources :listusers, only: [:index]
+
   root 'notes#index'
 end
