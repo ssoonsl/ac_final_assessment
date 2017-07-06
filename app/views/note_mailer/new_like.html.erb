@@ -1,0 +1,11 @@
+<h1>You have a new like!</h1>
+
+<p>
+  <%= @liker.email %> has liked your note! <strong>Your note now has <%= @note.likes.count %> likes!</strong>
+</p>
+<p>
+  In case you forgot, the contents of your note were as follows:
+  <blockquote>
+    <em><%= @note.body %></em>
+  </blockquote>
+</p>

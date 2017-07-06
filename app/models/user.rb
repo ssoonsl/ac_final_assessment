@@ -5,8 +5,17 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   has_many :notes
+  has_many :likes
   has_many :followers, class_name: 'Following', foreign_key: :follower_id
   has_many :followees, class_name: 'Following', foreign_key: :followee_id
+
+  def followed?(current_user)
+    Following.find_by(follower: current_user, followee: self)
+  end
+
+  def likes?(note)
+    Like.find_by(note: note, user: self)
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

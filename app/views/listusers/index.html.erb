@@ -11,10 +11,14 @@
         </thead>
         <tbody>
           <% @users.each do |user| %>
-            <tr>
-              <td><%= user.email %></td>
-              <td></td>
-            </tr>
+            <% if current_user != user && !user.followed?(current_user)%>
+              <tr>
+                <td><%= user.email %></td>
+                <td>
+                  <%= button_to 'Follow', followings_path(user), method: :post %>
+                </td>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
