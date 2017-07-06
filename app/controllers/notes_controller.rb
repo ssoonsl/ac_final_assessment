@@ -16,7 +16,7 @@ class NotesController < ApplicationController
   def index
     @notes = Note.all
 
-    if user_signed_in? && current_user.followers.count > 0
+    if user_signed_in?
       followees_id = current_user.followers.pluck(:followee_id)
 
       unless followees_id.nil?

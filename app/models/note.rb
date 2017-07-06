@@ -4,4 +4,5 @@ class Note < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   validates :body, presence: true
+
 end

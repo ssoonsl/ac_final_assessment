@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <% if user_signed_in? && current_user.followers.count > 0 %>
+    <% if user_signed_in? %>
       <%= render partial: 'noteslist_user' %>
     <% else %>
       <%= render partial: 'noteslist_visitor' %>

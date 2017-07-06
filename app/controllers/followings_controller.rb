@@ -14,4 +14,13 @@ class FollowingsController < ApplicationController
     redirect_to listusers_path
   end
 
+  def destroy
+    @followee = User.find(params[:id])
+    @follower = current_user
+    @following = Following.find_by(followee: @followee, follower: @follower)
+
+    @following.destroy
+    redirect_to notes_path
+  end
+
 end

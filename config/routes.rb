@@ -9,9 +9,11 @@ Rails.application.routes.draw do
 
   resources :listusers, only: [:index] do
     member do
-      resources :followings, only: [:create, :destroy]
+      resources :followings, only: [:create]
     end
   end
+
+  resources :followings, only: [:destroy]
 
   root 'notes#index'
 end
