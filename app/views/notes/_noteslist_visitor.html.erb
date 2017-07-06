@@ -1,7 +1,14 @@
 <div class="col-md-8 col-md-offset-2">
-  <h3>Notes from our users</h3>
 
-  <p>Create an account to post notes!</p>
+  <% if user_signed_in? %>
+    <h3>Notes Feed</h3>
+    <p>Now showing all users' notes. <%= link_to 'Find someone to follow and start customizing your notes feed!', listusers_path %></p>
+  <% else %>
+    <h3>Notes by our users</h3>
+    <p>Create an account to post notes and customize your notes feed!</p>
+  <% end %>
+
+  <%= button_to 'Create note', new_note_path, method: :get, class: "btn btn-default" %>
 
   <table class="table table-striped table-bordered">
     <thead>
