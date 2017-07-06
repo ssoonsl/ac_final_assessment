@@ -15,7 +15,7 @@
               <tr>
                 <td><%= user.email %></td>
                 <td>
-                  <%= button_to 'Follow', followings_path(user), method: :post %>
+                  <%= button_to 'Follow', followings_path(user), method: :post, class: "btn btn-default" %>
                 </td>
               </tr>
             <% end %>

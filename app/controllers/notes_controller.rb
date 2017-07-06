@@ -4,6 +4,7 @@ class NotesController < ApplicationController
 
   def index
     @notes = Note.all
+    @users = User.all
 
     if user_signed_in?
       followees_id = current_user.followers.pluck(:followee_id)
