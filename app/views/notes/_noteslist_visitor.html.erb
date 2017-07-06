@@ -1,0 +1,22 @@
+<div class="col-md-8 col-md-offset-2">
+  <h3>Notes from our users</h3>
+
+  <p>Create an account to post notes!</p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <th>Likes</th>
+      <th>Note</th>
+      <th>User</th>
+    </thead>
+      <tbody>
+        <% @notes.order('created_at DESC').each do |note| %>
+          <tr>
+            <th><%= note.likes.count %></th>
+            <td><%= note.body %></td>
+            <td><%= note.user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>

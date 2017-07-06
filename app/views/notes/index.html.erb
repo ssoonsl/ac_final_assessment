@@ -1,30 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
 
-      <table class="table table-striped table-bordered">
-        <thead>
-          <th>Likes</th>
-          <th></th>
-          <th>Note</th>
-          <th>User</th>
-        </thead>
-        <tbody>
-          <% @notes.each do |note| %>
-            <tr>
-              <th><%= note.likes.count %></th>
-              <% if current_user.likes?(note) %>
-                <th><%= button_to 'Unlike', like_path(note), method: :delete %></th>
-              <% else %>
-                <th><%= button_to 'Like', likes_path(note), method: :post %></th>
-              <% end %>
-              <td><%= note.body %></td>
-              <td><%= note.user.email %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <% if user_signed_in? %>
+      <%= render partial: 'noteslist_user' %>
+    <% else %>
+      <%= render partial: 'noteslist_visitor' %>
+    <% end %>
 
-    </div>
   </div>
 </div>

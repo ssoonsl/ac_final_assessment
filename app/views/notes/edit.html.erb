@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <h1>Edit your note</h1>
+
+      <%= simple_form_for @note, url: note_path(@note) do |f| %>
+        <%= f.input :body, label: false, autofocus: true %>
+        <%= f.submit 'Edit my note' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
